@@ -5,7 +5,7 @@ export const firstMileSuggestion = async (req, res) => {
     const { MilesCarriers, selectedCarrier } = req.body;
     // Construct the prompt to guide the model's response
     const prompt = `
-      You have the following mile carriers available: ${firstMilesCarriers.join(
+      You have the following mile carriers available: ${MilesCarriers.join(
         ", "
       )}. 
       The currently selected carrier is ${selectedCarrier}. 
@@ -29,6 +29,6 @@ export const firstMileSuggestion = async (req, res) => {
         data: completion.choices[0]?.message?.content || "",
       });
   } catch (error) {
-    res.status(500).send("ok");
+    res.status(500).json({error});
   }
 };
