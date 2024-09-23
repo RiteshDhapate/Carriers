@@ -2,10 +2,10 @@ import { groq } from "../groq_sdk/groq.js";
 
 export const firstMileSuggestion = async (req, res) => {
   try {
-    const { firstMilesCarriers, selectedCarrier } = req.body;
+    const { MilesCarriers, selectedCarrier } = req.body;
     // Construct the prompt to guide the model's response
     const prompt = `
-      You have the following first-mile carriers available: ${firstMilesCarriers.join(
+      You have the following mile carriers available: ${firstMilesCarriers.join(
         ", "
       )}. 
       The currently selected carrier is ${selectedCarrier}. 

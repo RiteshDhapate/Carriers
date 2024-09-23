@@ -5,9 +5,9 @@ import axios from "axios";
 const openai = new OpenAI({ apiKey: process.env.OPEN_AI_API_KEY });
 const route = express.Router();
 
-route.post("/first-Mile-suggestion", firstMileSuggestion);
+route.post("/Mile-suggestion", firstMileSuggestion);
 
-route.get("/estimate", async (req, res) => {
+route.post("/estimate", async (req, res) => {
   try {
     let myHeaders = new Headers();
     myHeaders.append("Host", "api.shipengine.com");
@@ -35,6 +35,7 @@ route.get("/estimate", async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: error });
   }
 });
 
